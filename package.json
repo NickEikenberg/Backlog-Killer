@@ -8,7 +8,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build:css": "tailwind build src/style.css -o styles/style.css"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,9 @@
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "method-override": "^3.0.0",
-    "mongoose": "^6.0.11"
+    "mongoose": "^6.0.11",
+    "tailwindcss": "^2.2.17"
   }
 }
