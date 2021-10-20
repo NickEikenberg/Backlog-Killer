@@ -37,4 +37,11 @@ games.get('/setup/seed', (req, res) => {
   );
 });
 
+// JSON INDEX
+games.get('/setup/JSON', (req, res) => {
+  Game.find({}, (err, games) => {
+    res.send(games);
+  });
+});
+
 module.exports = games;
