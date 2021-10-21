@@ -2,21 +2,39 @@
 <html lang="en">
   <%- include('../partials/head.ejs') %>
   <body>
-    <h1>Edit Game</h1>
-    <form action="/backlogkiller" method="post">
+    <h1>Edit Game: <%= game[0].title%></h1>
+    <form action="/backlogkiller/<%= game[0].name %>?_method=put" method="post">
       Game Name:
       <input
         type="text"
         name="name"
         placeholder="Name of game with no spaces"
+        value="<%=game[0].name%>"
       /><br />
       Game Title:
-      <input type="text" name="title" placeholder="Title of game" /> <br />
-      Release Date: <input type="text" name="releaseDate" /><br />
-      Platform: <input type="text" name="platform" /> <br />
-      Genre: <input type="text" name="genre" /><br />
-      Description: <textarea name="description"></textarea><br />
-      Image: <input type="text" name="img" /><br />
+      <input
+        type="text"
+        name="title"
+        placeholder="Title of game"
+        value="<%= game[0].title %> "
+      />
+      <br />
+      Release Date:
+      <input
+        type="text"
+        name="releaseDate"
+        value="<%=game[0].releaseDate%>"
+      /><br />
+      Platform:
+      <input type="text" name="platform" value="<%=game[0].platform%>" /> <br />
+      Genre: <input type="text" name="genre" value="<%=game[0].genre%>" /><br />
+      Description:
+      <textarea
+        name="description"
+        placeholder="<%=game[0].description%>"
+      ></textarea
+      ><br />
+      Image: <input type="text" name="img" value="<%=game[0].img%>" /><br />
 
       <input type="submit" value="Create Game" />
     </form>

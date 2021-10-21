@@ -6,6 +6,17 @@ const Seed = require('../models/gamesSeed');
 ///////////////////////////////////
 ////// EDIT ROUTES
 
+games.put('/:titleOfGame', (req, res) => {
+  Game.findOneAndUpdate(
+    { name: req.params.titleOfGame },
+    req.body,
+    { new: true },
+    (err, updatedGame) => {
+      res.redirect(`/backlogkiller/${updatedGame.name}`);
+    }
+  );
+});
+
 games.get('/:titleOfGame/edit', (req, res) => {
   Game.find({ name: req.params.titleOfGame }, (err, foundGame) => {
     res.render('games/edit.ejs', {
