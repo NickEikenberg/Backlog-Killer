@@ -2,12 +2,13 @@
 <html lang="en">
   <%-include('../partials/head.ejs')%>
   <body>
+    <%- include('../partials/header.ejs') %>
     <h1>HOME</h1>
     <a href="/users/new">Create new user</a>
     <a href="/sessions/new">User Login</a>
     <form action="/sessions?_method=DELETE" method="post">
       <input type="submit" value="LOGOUT" />
     </form>
-    <%=games%>
+    <%=games%> <%- include('../partials/icons.ejs') %>
   </body>
 </html>
