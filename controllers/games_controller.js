@@ -3,13 +3,21 @@ const games = express.Router();
 const Game = require('../models/games');
 const Seed = require('../models/gamesSeed');
 
-// PATCH
-games.patch('/:id', (req, res) => {
-  Game.findByIdAndUpdate(req.params.id, req.body, (err, game) => {
-    console.log(game);
-    res.redirect(`/backlogkiller/${game.name}`);
+///////////////////////////////////
+////// NEW ROUTES
+
+games.post('/', (req, res) => {
+  Game.create(req.body, (error, newGame) => {
+    res.redirect('/backlogkiller');
   });
 });
+
+games.get('/new', (req, res) => {
+  res.render('games/new.ejs', { tabTitle: 'New' });
+});
+
+///////////////////////////////////
+////// SHOW ROUTES
 
 // SHOW
 games.get('/:titleOfGame', (req, res) => {
@@ -22,6 +30,20 @@ games.get('/:titleOfGame', (req, res) => {
     });
   });
 });
+
+///////////////////////////////////
+////// PATCH ROUTES
+
+// PATCH BACKLOG
+games.patch('/:id', (req, res) => {
+  Game.findByIdAndUpdate(req.params.id, req.body, (err, game) => {
+    console.log(game);
+    res.redirect(`/backlogkiller/${game.name}`);
+  });
+});
+
+///////////////////////////////////
+////// INDEX AND SEED
 
 // INDEX
 games.get('/', (req, res) => {
