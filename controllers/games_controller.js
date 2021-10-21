@@ -4,6 +4,18 @@ const Game = require('../models/games');
 const Seed = require('../models/gamesSeed');
 
 ///////////////////////////////////
+////// EDIT ROUTES
+
+games.get('/:titleOfGame/edit', (req, res) => {
+  Game.find({ name: req.params.titleOfGame }, (err, foundGame) => {
+    res.render('games/edit.ejs', {
+      tabTitle: `Edit: ${foundGame.title}`,
+      game: foundGame,
+    });
+  });
+});
+
+///////////////////////////////////
 ////// NEW ROUTES
 
 games.post('/', (req, res) => {
