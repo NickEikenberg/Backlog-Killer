@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <h1>Create new user</h1>
+
+    <main>
+      <h1>REGISTER</h1>
+      <h2>Please fill in the information below:</h2>
+      <form action="/users" method="post">
+        <input type="text" name="username" placeholder="Username" required />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <input type="submit" value="Create My Account" />
+      </form>
+    </main>
+  </body>
+</html>
