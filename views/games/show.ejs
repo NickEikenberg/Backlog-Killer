@@ -2,6 +2,18 @@
 <html lang="en">
   <%-include('../partials/head.ejs')%>
   <body>
-    <h1><%=tabTitle%></h1>
+    <main>
+      <% for(let i = 0; i < game.length; i++) { %> <% if(game[i].name === name)
+      {%>
+
+      <h1>Game title is <%= game[i].title %></h1>
+      <%=JSON.stringify(game)%>
+      <h1>Game ID: <%=game[i].id%></h1>
+      <form action="/backlogkiller/<%=game[i].id%>?_method=PATCH" method="post">
+        <input type="text" name="inBacklog" value="<%=true%>" hidden />
+        <input type="submit" value="add to backlog" />
+      </form>
+      <% } %> <% } %>
+    </main>
   </body>
 </html>
