@@ -3,12 +3,12 @@
   <%-include('../partials/head.ejs')%>
   <body>
     <%- include('../partials/header.ejs') %>
-    <h1>HOME</h1>
+    <h1 class="">HOME</h1>
     <a href="/users/new">Create new user</a>
     <a href="/sessions/new">User Login</a>
     <form action="/sessions?_method=DELETE" method="post">
       <input type="submit" value="LOGOUT" />
     </form>
-    <%=games%> <%- include('../partials/icons.ejs') %>
+    <%- include('../partials/icons.ejs') %>
   </body>
 </html>
