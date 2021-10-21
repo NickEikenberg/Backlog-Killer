@@ -4,6 +4,15 @@ const Game = require('../models/games');
 const Seed = require('../models/gamesSeed');
 
 ///////////////////////////////////
+////// DELETE
+
+games.delete('/:id', (req, res) => {
+  Game.findByIdAndRemove(req.params.id, (err, game) => {
+    res.redirect('/backlogkiller');
+  });
+});
+
+///////////////////////////////////
 ////// EDIT ROUTES
 
 games.put('/:titleOfGame', (req, res) => {
