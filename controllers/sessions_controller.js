@@ -25,4 +25,11 @@ sessions.post('/', (req, res) => {
   });
 });
 
+sessions.delete('/', (req, res) => {
+  req.session.destroy(() => {
+    console.log('User logged out');
+    res.redirect('/');
+  });
+});
+
 module.exports = sessions;
