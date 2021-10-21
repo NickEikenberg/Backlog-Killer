@@ -10,15 +10,22 @@
       bg-gray-800
       text-3xl
       justify-between
+      shadow-lg
+      text-shadow
     "
   >
-    <div class="nav-icon">
+    <div class="nav-icon cursor-pointer">
       <ion-icon name="reorder-three-outline"></ion-icon>
     </div>
     <div class="logo-container">
-      <h1>Backlog <span class="text-red-600">Killer</span></h1>
+      <h1 class="group cursor-pointer hover:text-red-400">
+        <a href="/backlogkiller"
+          >Backlog
+          <span class="text-red-400 group-hover:text-white">Killer</span></a
+        >
+      </h1>
     </div>
-    <div class="user-icon">
+    <div class="user-icon cursor-pointer">
       <ion-icon name="person-circle-outline"></ion-icon>
     </div>
   </nav>
