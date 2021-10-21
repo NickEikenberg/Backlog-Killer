@@ -54,8 +54,10 @@ app.use(
 ////// CONTROLLERS
 const gamesController = require('./controllers/games_controller');
 const userController = require('./controllers/users_controller');
+const sessionsController = require('./controllers/sessions_controller');
 app.use('/backlogkiller', gamesController);
 app.use('/users', userController);
+app.use('/sessions', sessionsController);
 
 /////////////////////
 ///// ROUTES
