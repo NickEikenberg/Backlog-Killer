@@ -10,8 +10,8 @@
       justify-between
     "
   >
-    <div class="nav-icon cursor-pointer group">
-      <ion-icon name="reorder-three-outline"></ion-icon>
+    <div class="nav-icon group">
+      <ion-icon name="reorder-three-outline cursor-pointer"></ion-icon>
       <div
         class="
           pullout-nav
@@ -21,18 +21,27 @@
           bg-gray-800
           flex flex-col
           text-white
-          left-0
+          -left-60
           top-0
           z-20
           shadow-lg
-          transform
-          md:w-1/4
+          px-2
+          md:w-1/3
         "
       >
-        <div class="login-div">LOGIN</div>
-        <div class="my-backlog-div">BACKLOG</div>
-        <div class="now-playing-div">NOW PLAYING</div>
-        <div class="finished-div">FINISHED GAMES</div>
+        <div class="login-div py-2">
+          <a href="" class="hover:text-red-400">LOGIN</a>
+        </div>
+        <div class="my-backlog-div py-2">
+          <a href="" class="hover:text-red-400">BACKLOG</a>
+        </div>
+        <div class="now-playing-div py-2">
+          <a href="" class="hover:text-red-400">NOW PLAYING</a>
+        </div>
+        <div class="finished-div py-2">
+          <a href="" class="hover:text-red-400">FINISHED GAMES</a>
+        </div>
+        <div class="pullout-nav-divider h-3/6"></div>
         <div class="logo-container justify-self-end">
           <h1 class="group cursor-pointer">
             <a href="/backlogkiller" class=""

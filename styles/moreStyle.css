@@ -1,0 +1,25 @@
+.pullout-nav {
+  animation-name: slideIn;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.slide-out-anim {
+  animation-name: slideOut;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideIn {
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes slideOut {
+  100% {
+    left: -15rem;
+  }
+}
