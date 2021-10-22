@@ -56,7 +56,7 @@ games.get('/:titleOfGame', (req, res) => {
   //   res.render('games/show.ejs', { tabTitle: req.params.titleOfGame });
   Game.find({ name: req.params.titleOfGame }, (err, game) => {
     res.render('games/show.ejs', {
-      tabTitle: game.title,
+      tabTitle: game[0].title,
       game: game,
       name: req.params.titleOfGame,
     });
