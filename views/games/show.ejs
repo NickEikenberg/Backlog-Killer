@@ -3,6 +3,8 @@
   <%-include('../partials/head.ejs')%>
 
   <body>
+    <%- include('../partials/header.ejs') %>
+
     <main>
       <% for(let i = 0; i < game.length; i++) { %> <% if(game[i].name === name)
       {%>
@@ -22,5 +24,6 @@
       </form>
       <% } %> <% } %>
     </main>
+    <%- include('../partials/icons.ejs') %>
   </body>
 </html>
