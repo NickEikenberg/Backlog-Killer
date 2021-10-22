@@ -5,23 +5,36 @@
   <body class="bg-gradient-to-r from-blue-200 via-blue-400 to-blue-600">
     <%- include('../partials/header.ejs') %>
 
-    <main>
+    <main class="flex flex-col items-center m-4">
       <% for(let i = 0; i < game.length; i++) { %> <% if(game[i].name === name)
       {%>
 
-      <h1>Game title is <%= game[i].title %></h1>
-      <%=JSON.stringify(game)%>
-      <h1>Game ID: <%=game[i].id%></h1>
-      <form action="/backlogkiller/<%=game[i].id%>?_method=PATCH" method="post">
-        <input type="text" name="inBacklog" value="<%=true%>" hidden />
-        <input type="submit" value="add to backlog" />
-      </form>
-      <form
-        action="/backlogkiller/<%= game[i].id %>?_method=DELETE"
-        method="post"
-      >
-        <input type="submit" value="Delete game" />
-      </form>
+      <div class="game-img-container">
+        <img src="<%= game[i].img %>" alt="" />
+      </div>
+      <div class="btns-container flex">
+        <form
+          action="/backlogkiller/<%=game[i].id%>?_method=PATCH"
+          method="post"
+        >
+          <input type="text" name="inBacklog" value="<%=true%>" hidden />
+          <input type="submit" value="add to backlog" />
+        </form>
+        <form
+          action="/backlogkiller/<%= game[i].id %>?_method=DELETE"
+          method="post"
+        >
+          <input type="submit" value="Delete game" />
+        </form>
+      </div>
+
+      <div class="info-container text-center">
+        <h1><%= game[i].title %></h1>
+        <h2><%= game[i].releaseDate %></h2>
+        <h2><%= game[i].platform %></h2>
+        <h2><%= game[i].genre %></h2>
+        <p><%= game[i].description %></p>
+      </div>
       <% } %> <% } %>
     </main>
     <%- include('../partials/icons.ejs') %>
