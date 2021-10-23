@@ -1,22 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('../partials/head.ejs') %>
-  <body>
-    <h1>Create new user</h1>
+  <body class="bg-gradient-to-r from-blue-200 via-blue-400 to-blue-600">
+    <%- include('../partials/header.ejs') %>
 
-    <main>
-      <h1>REGISTER</h1>
-      <h2>Please fill in the information below:</h2>
-      <form action="/users" method="post">
-        <input type="text" name="username" placeholder="Username" required />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-        />
-        <input type="submit" value="Create My Account" />
-      </form>
-    </main>
+    <div class="form-container flex justify-center my-10 h-3/4">
+      <main
+        class="
+          flex flex-col
+          w-3/4
+          bg-gray-800
+          border-gray-800
+          rounded-md
+          p-4
+          md:w-1/2
+          text-white
+        "
+      >
+        <h1 class="text-center text-4xl mb-6">New User</h1>
+
+        <form
+          action="/users"
+          method="post"
+          class="flex flex-col justify-center"
+        >
+          <h1 class="px-2">Username</h1>
+          <input
+            type="text"
+            name="username"
+            placeholder="Enter your username"
+            required
+            class="bg-gray-800 border-white border-b-2 rounded-sm p-2 mb-4"
+          />
+          <h1 class="px-2">Password</h1>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            class="bg-gray-800 border-white border-b-2 rounded-sm p-2"
+          />
+          <input
+            type="submit"
+            value="Sign Up"
+            class="
+              cursor-pointer
+              my-10
+              py-2
+              border-blue-600
+              rounded-md
+              bg-blue-600 bg-opacity-50
+              hover:bg-opacity-100
+            "
+          />
+        </form>
+      </main>
+    </div>
+    <%- include('../partials/icons.ejs') %>
   </body>
 </html>

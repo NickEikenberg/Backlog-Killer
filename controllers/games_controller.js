@@ -3,6 +3,12 @@ const games = express.Router();
 const Game = require('../models/games');
 const Seed = require('../models/gamesSeed');
 
+const isAuthenticated = (req, res, next) => {
+  if (req.session.currentUser) {
+    return next();
+  }
+};
+
 ///////////////////////////////////
 ////// DELETE
 

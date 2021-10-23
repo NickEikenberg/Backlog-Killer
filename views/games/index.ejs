@@ -3,9 +3,22 @@
   <%-include('../partials/head.ejs')%>
   <body class="bg-gradient-to-r from-blue-200 via-blue-400 to-blue-600">
     <%- include('../partials/header.ejs') %>
-    <h1 class="">HOME</h1>
-    <a href="/users/new">Create new user</a>
-    <a href="/sessions/new">User Login</a>
+    <header class="bg-gray-800 shadow-lg flex flex-col items-center py-2">
+      <div class="search-div flex w-3/4">
+        <form action="" id="search-form" class="flex relative w-full">
+          <input
+            type="text"
+            name="search"
+            placeholder="Search Games"
+            class="w-full px-2 text-black"
+          />
+          <a href="" class="bg-opacity-0 absolute right-0 text-2xl"
+            ><ion-icon name="search-circle-outline"></ion-icon
+          ></a>
+        </form>
+      </div>
+    </header>
+
     <form action="/sessions?_method=DELETE" method="post">
       <input type="submit" value="LOGOUT" />
     </form>
