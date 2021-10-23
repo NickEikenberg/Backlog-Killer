@@ -3,14 +3,23 @@ const express = require('express');
 const sessions = express.Router();
 const User = require('../models/users');
 
-const isAuthenticated = (req, res, next) => {
-  if (req.session.currentUser) {
-    return next();
-  }
-};
+//////////////////////
+//// USER MENU
 
+sessions.get('/user/:username', (req, res) => {
+  res.render('sessions/main.ejs', {
+    tabTitle: req.params.username,
+    currentUser: req.session.currentUser,
+  });
+});
+
+//////////////////////
+//// USER AUTHENTICATION
 sessions.get('/new', (req, res) => {
-  res.render('sessions/new.ejs', { tabTitle: 'Login' });
+  res.render('sessions/new.ejs', {
+    tabTitle: 'Login',
+    currentUser: req.session.currentUser,
+  });
 });
 
 sessions.post('/', (req, res) => {

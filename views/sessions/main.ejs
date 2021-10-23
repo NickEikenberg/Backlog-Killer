@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body class="bg-gradient-to-r from-blue-200 via-blue-400 to-blue-600">
+    <%- include('../partials/header.ejs') %>
+    <main class="bg-gray-800 m-4 border-gray-800 border-2 rounded-md">
+      <h1 class="text-white text-3xl border-b-black border-b-2 w-3/4 mx-4 my-6">
+        <%= currentUser.username %>'s Backlog
+      </h1>
+    </main>
+    <%- include('../partials/icons.ejs') %>
+  </body>
+</html>

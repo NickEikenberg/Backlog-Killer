@@ -62,8 +62,11 @@
       </h1>
     </div>
     <div class="user-icon cursor-pointer">
-      <a href="/sessions/new"
-        ><ion-icon name="person-circle-outline"></ion-icon
+      <a <% if(currentUser) { %>
+        href="/sessions/user/<%= currentUser.username %>" <% } else {%>
+        href="/sessions/new" <% } %> ><ion-icon
+          name="person-circle-outline"
+        ></ion-icon
       ></a>
     </div>
   </nav>
