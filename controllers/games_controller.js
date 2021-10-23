@@ -31,6 +31,7 @@ games.get('/:titleOfGame/edit', (req, res) => {
     res.render('games/edit.ejs', {
       tabTitle: `Edit: ${foundGame.title}`,
       game: foundGame,
+      currentUser: req.session.currentUser,
     });
   });
 });
@@ -45,7 +46,10 @@ games.post('/', (req, res) => {
 });
 
 games.get('/new', (req, res) => {
-  res.render('games/new.ejs', { tabTitle: 'New' });
+  res.render('games/new.ejs', {
+    tabTitle: 'New',
+    currentUser: req.session.currentUser,
+  });
 });
 
 ///////////////////////////////////
@@ -59,6 +63,7 @@ games.get('/:titleOfGame', (req, res) => {
       tabTitle: game[0].title,
       game: game,
       name: req.params.titleOfGame,
+      currentUser: req.session.currentUser,
     });
   });
 });

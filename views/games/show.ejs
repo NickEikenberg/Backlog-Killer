@@ -25,6 +25,7 @@
         <img src="<%= game[i].img %>" alt="" />
       </div>
       <div class="btns-container flex py-2">
+        <% if(currentUser){ %>
         <form
           action="/backlogkiller/<%=game[i].id%>?_method=PATCH"
           method="post"
@@ -42,6 +43,19 @@
             "
           />
         </form>
+
+        <% } else { %>
+        <a
+          href="../sessions/new"
+          class="
+            cursor-pointer
+            px-2
+            bg-blue-600 bg-opacity-50
+            hover:bg-opacity-100
+          "
+          >Add to Backlog</a
+        >
+        <% } %>
         <form
           action="/backlogkiller/<%= game[i].id %>?_method=DELETE"
           method="post"
