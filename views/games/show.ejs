@@ -5,35 +5,71 @@
   <body class="bg-gradient-to-r from-blue-200 via-blue-400 to-blue-600">
     <%- include('../partials/header.ejs') %>
 
-    <main class="flex flex-col items-center m-4">
+    <main
+      class="
+        flex flex-col
+        items-center
+        m-4
+        bg-gray-800
+        py-2
+        text-white
+        shadow-lg
+        border-gray-800
+        rounded-lg
+      "
+    >
       <% for(let i = 0; i < game.length; i++) { %> <% if(game[i].name === name)
       {%>
 
       <div class="game-img-container">
         <img src="<%= game[i].img %>" alt="" />
       </div>
-      <div class="btns-container flex">
+      <div class="btns-container flex py-2">
         <form
           action="/backlogkiller/<%=game[i].id%>?_method=PATCH"
           method="post"
+          class="mx-2"
         >
           <input type="text" name="inBacklog" value="<%=true%>" hidden />
-          <input type="submit" value="add to backlog" />
+          <input
+            type="submit"
+            value="Add to Backlog"
+            class="
+              cursor-pointer
+              px-2
+              bg-blue-600 bg-opacity-50
+              hover:bg-opacity-100
+            "
+          />
         </form>
         <form
           action="/backlogkiller/<%= game[i].id %>?_method=DELETE"
           method="post"
+          class="mx-2"
         >
-          <input type="submit" value="Delete game" />
+          <input
+            type="submit"
+            value="Delete Game"
+            class="
+              cursor-pointer
+              px-2
+              bg-blue-600 bg-opacity-50
+              hover:bg-opacity-100
+            "
+          />
         </form>
       </div>
 
-      <div class="info-container text-center">
-        <h1><%= game[i].title %></h1>
-        <h2><%= game[i].releaseDate %></h2>
-        <h2><%= game[i].platform %></h2>
-        <h2><%= game[i].genre %></h2>
-        <p><%= game[i].description %></p>
+      <div class="info-container text-left mx-2">
+        <h1 class="text-3xl border-t-2 border-black py-2">
+          <%= game[i].title %>
+        </h1>
+        <h2>Release Date: <%= game[i].releaseDate %></h2>
+        <h2>Platform(s): <%= game[i].platform %></h2>
+        <h2>Genre: <%= game[i].genre %></h2>
+        <p class="text-xl my-4 py-2 border-t-2 border-black">
+          <%= game[i].description %>
+        </p>
       </div>
       <% } %> <% } %>
     </main>
