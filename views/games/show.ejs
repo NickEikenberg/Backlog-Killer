@@ -31,7 +31,7 @@
           method="post"
           class="mx-2"
         >
-          <input type="text" name="inBacklog" value="<%=true%>" hidden />
+          <% currentUser.backlog.push(game[i]) %>
           <input
             type="submit"
             value="Add to Backlog"
