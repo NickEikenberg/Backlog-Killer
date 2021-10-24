@@ -8,6 +8,17 @@ const addGameToBacklog = (user, game) => {
 };
 
 ///////////////////////////////////
+////// BACKLOG CONTROLLER
+
+// BACKLOG
+games.get('/:titleOfGame/addToBacklog', (req, res) => {
+  Game.find({ name: req.params.titleOfGame }, (err, game) => {
+    req.session.currentUser.backlog.push(game[0]);
+    res.redirect(`/backlogkiller/${game[0].name}`);
+  });
+});
+
+///////////////////////////////////
 ////// DELETE
 
 games.delete('/:id', (req, res) => {
@@ -63,7 +74,7 @@ games.get('/new', (req, res) => {
 games.post('/addToBacklog/:titleOfGame', (req, res) => {
   console.log('/addToBacklog');
   Game.find({ name: req.params.titleOfGame }, (err, game) => {
-    req.session.currentUser.backlog.push(game[0]._id);
+    req.session.currentUser.backlog.push(game[0].title);
   });
 });
 

@@ -26,21 +26,17 @@
       </div>
       <div class="btns-container flex py-2">
         <% if(currentUser){ %>
-        <form
-          action="/backlogkiller/addToBacklog/<%=game[i].name%>"
-          method="post"
+
+        <a
+          href="/backlogkiller/<%= game[i].name %>/addtobacklog"
+          class="
+            cursor-pointer
+            px-2
+            bg-blue-600 bg-opacity-50
+            hover:bg-opacity-100
+          "
+          >Add to Backlog</a
         >
-          <input
-            type="submit"
-            value="Add to Backlog"
-            class="
-              cursor-pointer
-              px-2
-              bg-blue-600 bg-opacity-50
-              hover:bg-opacity-100
-            "
-          />
-        </form>
 
         <% } else { %>
         <a
