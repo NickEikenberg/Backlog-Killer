@@ -19,7 +19,7 @@
       "
     >
       <% for(let i = 0; i < game.length; i++) { %> <% if(game[i].name === name)
-      {%>
+      { %>
 
       <div class="game-img-container">
         <img src="<%= game[i].img %>" alt="" />
@@ -27,11 +27,9 @@
       <div class="btns-container flex py-2">
         <% if(currentUser){ %>
         <form
-          action="/backlogkiller/<%=game[i].id%>?_method=PATCH"
+          action="/backlogkiller/addToBacklog/<%=game[i].name%>"
           method="post"
-          class="mx-2"
         >
-          <% currentUser.backlog.push(game[i]) %>
           <input
             type="submit"
             value="Add to Backlog"

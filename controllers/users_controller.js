@@ -4,7 +4,10 @@ const users = express.Router();
 const User = require('../models/users');
 
 users.get('/new', (req, res) => {
-  res.render('users/new.ejs', { tabTitle: 'Create Account' });
+  res.render('users/new.ejs', {
+    tabTitle: 'Create Account',
+    currentUser: req.session.currentUser,
+  });
 });
 
 users.post('/', (req, res) => {
@@ -13,8 +16,7 @@ users.post('/', (req, res) => {
     bcrypt.genSaltSync(10)
   );
   User.create(req.body, (err, createdUser) => {
-    console.log('new user: ', createdUser);
-    res.redirect('/backlogkiller');
+    res.redirect('/sessions/new');
   });
 });
 

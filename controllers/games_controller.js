@@ -3,6 +3,10 @@ const games = express.Router();
 const Game = require('../models/games');
 const Seed = require('../models/gamesSeed');
 
+const addGameToBacklog = (user, game) => {
+  user.backlog.push(game);
+};
+
 ///////////////////////////////////
 ////// DELETE
 
@@ -55,6 +59,14 @@ games.get('/new', (req, res) => {
 ///////////////////////////////////
 ////// SHOW ROUTES
 
+// ADD GAME TO BACKLOG
+games.post('/addToBacklog/:titleOfGame', (req, res) => {
+  console.log('/addToBacklog');
+  Game.find({ name: req.params.titleOfGame }, (err, game) => {
+    req.session.currentUser.backlog.push(game[0]._id);
+  });
+});
+
 // SHOW
 games.get('/:titleOfGame', (req, res) => {
   //   res.render('games/show.ejs', { tabTitle: req.params.titleOfGame });
@@ -74,7 +86,6 @@ games.get('/:titleOfGame', (req, res) => {
 // PATCH BACKLOG
 games.patch('/:id', (req, res) => {
   Game.findByIdAndUpdate(req.params.id, req.body, (err, game) => {
-    console.log(game);
     res.redirect(`/backlogkiller/${game.name}`);
   });
 });
