@@ -16,4 +16,4 @@ JavaScript, EJS, HTML, CSS (Tailwind CSS), Express, Mongoose, MongoDB Atlas, and
 
 ### Known Issues
 
-1. Adding a game to the user backlog currently adds that game twice
+1. N/A

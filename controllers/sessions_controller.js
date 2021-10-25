@@ -34,7 +34,7 @@ sessions.post('/', (req, res) => {
       if (bcrypt.compareSync(req.body.password, foundUser.password)) {
         req.session.currentUser = foundUser;
         console.log('User Logged In:', foundUser);
-        res.redirect('/backlogkiller');
+        res.redirect(`/sessions/user/${req.session.currentUser.username}`);
       } else {
         res.send('<a href="/">Password does not match</a>');
       }

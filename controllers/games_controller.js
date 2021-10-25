@@ -21,7 +21,14 @@ games.get('/:titleOfGame/addToBacklog', (req, res) => {
 
 games.get('/:id/addToNowPlaying', (req, res) => {
   Game.find({ id: req.params.id }, (err, game) => {
-    req.session.currentUser.nowPlaying.push(req.params.id);
+    let user = req.session.currentUser;
+    user.nowPlaying.push(game);
+    user.backlog.splice(
+      user.backlog.indexOf(
+        user.backlog.find((el) => el.id === req.params.id),
+        1
+      )
+    );
     console.log(req.session.currentUser.nowPlaying.length);
     res.redirect(`/sessions/user/${req.session.currentUser.username}`);
   });
@@ -80,12 +87,12 @@ games.get('/new', (req, res) => {
 ////// SHOW ROUTES
 
 // ADD GAME TO BACKLOG
-games.post('/addToBacklog/:titleOfGame', (req, res) => {
-  console.log('/addToBacklog');
-  Game.find({ name: req.params.titleOfGame }, (err, game) => {
-    req.session.currentUser.backlog.push(game[0].title);
-  });
-});
+// games.post('/addToBacklog/:titleOfGame', (req, res) => {
+//   console.log('/addToBacklog');
+//   Game.find({ name: req.params.titleOfGame }, (err, game) => {
+//     req.session.currentUser.backlog.push(game[0].title);
+//   });
+// });
 
 // SHOW
 games.get('/:titleOfGame', (req, res) => {

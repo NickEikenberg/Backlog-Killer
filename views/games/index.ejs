@@ -67,7 +67,11 @@
               "
             >
               <% if(currentUser) { %>
-              <a href="" class="">ADD TO BACKLOG</a>
+              <a
+                href="/backlogkiller/<%= games[i].name %>/addtobacklog"
+                class=""
+                >ADD TO BACKLOG</a
+              >
 
               <% } else {%>
               <a href="/sessions/new" class="">ADD TO BACKLOG</a>
