@@ -26,16 +26,13 @@ games.get('/:id/addToNowPlaying', (req, res) => {
     for (let i = 0; i < game.length; i++) {
       if (game[i].id === req.params.id) {
         user.nowPlaying.push(game[i]);
-        user.backlog.splice(
-          user.backlog.indexOf(
-            user.backlog.find((el) => el.id === req.params.id),
-            1
-          )
+        let indexOfBacklogGame = user.backlog.findIndex(
+          (el) => el._id === req.params.id
         );
+        user.backlog.splice(indexOfBacklogGame, 1);
       }
     }
-    console.log(req.session.currentUser.nowPlaying.length);
-    console.log(req.session.currentUser.nowPlaying);
+
     res.redirect(`/sessions/user/${req.session.currentUser.username}`);
   });
 });
