@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+
+  <body class="bg-gradient-to-r from-blue-200 via-blue-400 to-blue-600">
+    <%- include('../partials/header.ejs') %>
+    <div class="main-container flex justify-center">
+      <main class="bg-gray-800 m-4 border-gray-800 border-2 rounded-md w-3/4">
+        <div
+          class="
+            finished-games
+            flex flex-col
+            items-center
+            text-white text-center
+          "
+        >
+          <h1 class="text-5xl">Hall of Completion</h1>
+          <h2>View all of the games you've completed</h2>
+          <%= JSON.stringify(currentUser.finished) %>
+        </div>
+      </main>
+    </div>
+    <%- include('../partials/icons.ejs') %>
+  </body>
+</html>

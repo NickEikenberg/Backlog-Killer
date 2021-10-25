@@ -5,11 +5,17 @@
     <%- include('../partials/header.ejs') %>
     <div class="main-container flex flex-col items-center">
       <main class="bg-gray-800 m-4 border-gray-800 border-2 rounded-md w-3/4">
+        <a href="" name="backlog"></a>
         <h1
           class="text-white text-3xl border-b-black border-b-2 w-3/4 mx-4 my-6"
         >
           <%= currentUser.username %>'s Backlog
         </h1>
+        <div class="jump-to-playing mx-4 text-left">
+          <a href="#now-playing" class="text-blue-400 hover:text-blue-200"
+            >Jump to Now Playing</a
+          >
+        </div>
         <div class="backlog flex flex-wrap">
           <% if(currentUser.backlog.length === 0) { %>
           <h1 class="text-white m-4">
@@ -101,6 +107,12 @@
         >
           <%= currentUser.username %>'s Now Playing
         </h1>
+        <a href="" name="now-playing"></a>
+        <div class="jump-to-playing mx-4 text-left">
+          <a href="#backlog" class="text-blue-400 hover:text-blue-200"
+            >Jump to Backlog</a
+          >
+        </div>
         <div class="backlog flex flex-wrap">
           <% if(currentUser.nowPlaying.length === 0) { %>
           <h1 class="text-white m-4">
@@ -162,7 +174,7 @@
                 >
                   <% if(currentUser) { %>
                   <a
-                    href="/backlogkiller/<%= currentUser.nowPlaying[i]._id %>/addToNowPlaying"
+                    href="/backlogkiller/<%= currentUser.nowPlaying[i]._id %>/addToFinished"
                     class=""
                     >ADD TO FINISHED</a
                   >

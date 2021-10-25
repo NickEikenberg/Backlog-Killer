@@ -19,10 +19,11 @@ games.get('/:titleOfGame/addToBacklog', (req, res) => {
   });
 });
 
+//  NOW PLAYING
 games.get('/:id/addToNowPlaying', (req, res) => {
   Game.find({ id: req.params.id }, (err, game) => {
     let user = req.session.currentUser;
-    //USE FILTER
+
     for (let i = 0; i < game.length; i++) {
       if (game[i].id === req.params.id) {
         user.nowPlaying.push(game[i]);
@@ -33,6 +34,24 @@ games.get('/:id/addToNowPlaying', (req, res) => {
       }
     }
 
+    res.redirect(`/sessions/user/${req.session.currentUser.username}`);
+  });
+});
+
+// FINISHED
+games.get('/:id/addToFinished', (req, res) => {
+  Game.find({ id: req.params.id }, (err, games) => {
+    let user = req.session.currentUser;
+
+    for (let i = 0; i < games.length; i++) {
+      if (games[i].id === req.params.id) {
+        user.finished.push(games[i]);
+        let indexOfPlayingGame = user.backlog.findIndex(
+          (el) => el._id === req.params.id
+        );
+        user.nowPlaying.splice(indexOfPlayingGame, 1);
+      }
+    }
     res.redirect(`/sessions/user/${req.session.currentUser.username}`);
   });
 });

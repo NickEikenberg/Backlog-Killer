@@ -7,11 +7,20 @@ const Game = require('../models/games');
 //////////////////////
 //// USER MENU
 
+//BACKLOG AND NOW PLAYING
 sessions.get('/user/:username', (req, res) => {
   res.render('sessions/main.ejs', {
     tabTitle: req.params.username,
     currentUser: req.session.currentUser,
     Games: Game,
+  });
+});
+
+// FINISHED GAMES
+sessions.get('/user/:username/finished', (req, res) => {
+  res.render('sessions/finished.ejs', {
+    tabTitle: 'Finished Games',
+    currentUser: req.session.currentUser,
   });
 });
 
