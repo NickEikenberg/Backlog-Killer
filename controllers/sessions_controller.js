@@ -11,6 +11,7 @@ sessions.get('/user/:username', (req, res) => {
   res.render('sessions/main.ejs', {
     tabTitle: req.params.username,
     currentUser: req.session.currentUser,
+    Games: Game,
   });
 });
 

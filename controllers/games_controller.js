@@ -14,7 +14,16 @@ const addGameToBacklog = (user, game) => {
 games.get('/:titleOfGame/addToBacklog', (req, res) => {
   Game.find({ name: req.params.titleOfGame }, (err, game) => {
     req.session.currentUser.backlog.push(game[0]);
+
     res.redirect(`/backlogkiller/${game[0].name}`);
+  });
+});
+
+games.get('/:id/addToNowPlaying', (req, res) => {
+  Game.find({ id: req.params.id }, (err, game) => {
+    req.session.currentUser.nowPlaying.push(req.params.id);
+    console.log(req.session.currentUser.nowPlaying.length);
+    res.redirect(`/sessions/user/${req.session.currentUser.username}`);
   });
 });
 
