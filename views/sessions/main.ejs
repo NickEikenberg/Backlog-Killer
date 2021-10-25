@@ -3,173 +3,188 @@
   <%- include('../partials/head.ejs') %>
   <body class="bg-gradient-to-r from-blue-200 via-blue-400 to-blue-600">
     <%- include('../partials/header.ejs') %>
-    <main class="bg-gray-800 m-4 border-gray-800 border-2 rounded-md">
-      <h1 class="text-white text-3xl border-b-black border-b-2 w-3/4 mx-4 my-6">
-        <%= currentUser.username %>'s Backlog
-      </h1>
-      <div class="backlog flex flex-wrap">
-        <% if(currentUser.backlog.length === 0) { %>
-        <h1 class="text-white m-4">
-          Go
-          <a href="/backlogkiller" class="text-blue-400 hover:text-blue-200"
-            >add some games</a
-          >
-          to your backlog!
+    <div class="main-container flex flex-col items-center">
+      <main class="bg-gray-800 m-4 border-gray-800 border-2 rounded-md w-3/4">
+        <h1
+          class="text-white text-3xl border-b-black border-b-2 w-3/4 mx-4 my-6"
+        >
+          <%= currentUser.username %>'s Backlog
         </h1>
-        <% } else { %> <% for(let i = 0; i < currentUser.backlog.length; i++) {
-        %>
-        <div class="game-container w-1/2 p-2 md:w-1/4">
-          <div class="img-container relative group">
-            <img src="<%= currentUser.backlog[i].img %>" alt="" />
-            <div
-              class="
-                buttons-div
-                absolute
-                bg-black
-                w-full
-                h-full
-                top-0
-                bg-opacity-30
-                flex flex-col
-                items-center
-                justify-center
-                opacity-0
-                group-hover:opacity-100
-              "
+        <div class="backlog flex flex-wrap">
+          <% if(currentUser.backlog.length === 0) { %>
+          <h1 class="text-white m-4">
+            Go
+            <a href="/backlogkiller" class="text-blue-400 hover:text-blue-200"
+              >add some games</a
             >
+            to your backlog!
+          </h1>
+          <% } else { %> <% for(let i = 0; i < currentUser.backlog.length; i++)
+          { %>
+          <div class="game-container w-1/2 p-2 md:w-1/4">
+            <div class="img-container relative group">
+              <img
+                src="<%= currentUser.backlog[i].img %>"
+                alt=""
+                class="w-full"
+              />
               <div
                 class="
-                  btn-more-info
-                  text-white
-                  mb-10
-                  px-4
-                  bg-black bg-opacity-50
-                  cursor-pointer
+                  buttons-div
+                  absolute
+                  bg-black
+                  w-full
+                  h-full
+                  top-0
+                  bg-opacity-30
+                  flex flex-col
+                  items-center
+                  justify-center
+                  opacity-0
+                  group-hover:opacity-100
                 "
               >
-                <a href="/backlogkiller/<%=currentUser.backlog[i].name%>"
-                  >MORE INFO</a
+                <div
+                  class="
+                    btn-more-info
+                    text-white
+                    mb-10
+                    px-4
+                    bg-black bg-opacity-50
+                    cursor-pointer
+                  "
                 >
-              </div>
-              <!-- Add if statement for backlog button -->
-              <div
-                class="
-                  btn-add-backlog
-                  text-white
-                  px-4
-                  bg-black bg-opacity-50
-                  cursor-pointer
-                  text-center
-                  w-3/4
-                "
-              >
-                <% if(currentUser) { %>
-                <a
-                  href="/backlogkiller/<%= currentUser.backlog[i]._id %>/addToNowPlaying"
-                  class=""
-                  >ADD TO NOW PLAYING</a
+                  <a href="/backlogkiller/<%=currentUser.backlog[i].name%>"
+                    >MORE INFO</a
+                  >
+                </div>
+                <!-- Add if statement for backlog button -->
+                <div
+                  class="
+                    btn-add-backlog
+                    text-white
+                    px-4
+                    bg-black bg-opacity-50
+                    cursor-pointer
+                    text-center
+                    w-3/4
+                  "
                 >
+                  <% if(currentUser) { %>
+                  <a
+                    href="/backlogkiller/<%= currentUser.backlog[i]._id %>/addToNowPlaying"
+                    class=""
+                    >ADD TO NOW PLAYING</a
+                  >
 
-                <% } else {%>
-                <a href="/sessions/new" class="">ADD TO BACKLOG</a>
+                  <% } else {%>
+                  <a href="/sessions/new" class="">ADD TO BACKLOG</a>
 
-                <% } %>
+                  <% } %>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="info-container bottom-0 bg-black w-full p-2 shadow-md">
-            <h1 class="text-white"><%= currentUser.backlog[i].title %></h1>
-            <h2 class="text-white text-xs">
-              <%= currentUser.backlog[i].genre %>
-            </h2>
-          </div>
-        </div>
-        <% } %> <% } %>
-      </div>
-    </main>
-
-    <main class="bg-gray-800 m-4 border-gray-800 border-2 rounded-md">
-      <h1 class="text-white text-3xl border-b-black border-b-2 w-3/4 mx-4 my-6">
-        <%= currentUser.username %>'s Now Playing
-      </h1>
-      <div class="backlog flex flex-wrap">
-        <% if(currentUser.nowPlaying.length === 0) { %>
-        <h1 class="text-white m-4">
-          Highlight games in your backlog to add them to this section
-        </h1>
-        <% } else { %> <% for(let i = 0; i < currentUser.nowPlaying.length; i++)
-        { %> <% Games.findById(currentUser.nowPlaying[i], (err, game) => {%>
-        <h1><%= game.title %></h1>
-        <% }) %>
-        <div class="game-container w-1/2 p-2 md:w-1/4">
-          <div class="img-container relative group">
-            <img src="<%= currentUser.nowPlaying[i].img %>" alt="" />
-            <div
-              class="
-                buttons-div
-                absolute
-                bg-black
-                w-full
-                h-full
-                top-0
-                bg-opacity-30
-                flex flex-col
-                items-center
-                justify-center
-                opacity-0
-                group-hover:opacity-100
-              "
-            >
-              <div
-                class="
-                  btn-more-info
-                  text-white
-                  mb-10
-                  px-4
-                  bg-black bg-opacity-50
-                  cursor-pointer
-                "
-              >
-                <a href="/backlogkiller/<%=currentUser.nowPlaying[i].name%>"
-                  >MORE INFO</a
-                >
-              </div>
-              <!-- Add if statement for backlog button -->
-              <div
-                class="
-                  btn-add-backlog
-                  text-white
-                  px-4
-                  bg-black bg-opacity-50
-                  cursor-pointer
-                  text-center
-                  w-3/4
-                "
-              >
-                <% if(currentUser) { %>
-                <a
-                  href="/backlogkiller/<%= currentUser.nowPlaying[i]._id %>/addToNowPlaying"
-                  class=""
-                  >ADD TO FINISHED</a
-                >
-
-                <% } else {%>
-                <a href="/sessions/new" class="">ADD TO BACKLOG</a>
-
-                <% } %>
-              </div>
+            <div class="info-container bottom-0 bg-black w-full p-2 shadow-md">
+              <h1 class="text-white"><%= currentUser.backlog[i].title %></h1>
+              <h2 class="text-white text-xs">
+                <%= currentUser.backlog[i].genre %>
+              </h2>
             </div>
           </div>
-          <div class="info-container bottom-0 bg-black w-full p-2 shadow-md">
-            <h1 class="text-white"><%= currentUser.nowPlaying[i].title %></h1>
-            <h2 class="text-white text-xs">
-              <%= currentUser.nowPlaying[i].genre %>
-            </h2>
-          </div>
+          <% } %> <% } %>
         </div>
-        <% } %> <% } %>
-      </div>
-    </main>
+      </main>
+
+      <main class="bg-gray-800 m-4 border-gray-800 border-2 rounded-md w-3/4">
+        <h1
+          class="text-white text-3xl border-b-black border-b-2 w-3/4 mx-4 my-6"
+        >
+          <%= currentUser.username %>'s Now Playing
+        </h1>
+        <div class="backlog flex flex-wrap">
+          <% if(currentUser.nowPlaying.length === 0) { %>
+          <h1 class="text-white m-4">
+            Highlight games in your backlog to add them to this section
+          </h1>
+          <% } else { %> <% for(let i = 0; i < currentUser.nowPlaying.length;
+          i++) { %> <% Games.findById(currentUser.nowPlaying[i], (err, game) =>
+          {%>
+          <h1><%= game.title %></h1>
+          <% }) %>
+          <div class="game-container w-1/2 p-2 md:w-1/4">
+            <div class="img-container relative group">
+              <img
+                src="<%= currentUser.nowPlaying[i].img %>"
+                alt=""
+                class="w-full"
+              />
+              <div
+                class="
+                  buttons-div
+                  absolute
+                  bg-black
+                  w-full
+                  h-full
+                  top-0
+                  bg-opacity-30
+                  flex flex-col
+                  items-center
+                  justify-center
+                  opacity-0
+                  group-hover:opacity-100
+                "
+              >
+                <div
+                  class="
+                    btn-more-info
+                    text-white
+                    mb-10
+                    px-4
+                    bg-black bg-opacity-50
+                    cursor-pointer
+                  "
+                >
+                  <a href="/backlogkiller/<%=currentUser.nowPlaying[i].name%>"
+                    >MORE INFO</a
+                  >
+                </div>
+                <!-- Add if statement for backlog button -->
+                <div
+                  class="
+                    btn-add-backlog
+                    text-white
+                    px-4
+                    bg-black bg-opacity-50
+                    cursor-pointer
+                    text-center
+                    w-3/4
+                  "
+                >
+                  <% if(currentUser) { %>
+                  <a
+                    href="/backlogkiller/<%= currentUser.nowPlaying[i]._id %>/addToNowPlaying"
+                    class=""
+                    >ADD TO FINISHED</a
+                  >
+
+                  <% } else {%>
+                  <a href="/sessions/new" class="">ADD TO BACKLOG</a>
+
+                  <% } %>
+                </div>
+              </div>
+            </div>
+            <div class="info-container bottom-0 bg-black w-full p-2 shadow-md">
+              <h1 class="text-white"><%= currentUser.nowPlaying[i].title %></h1>
+              <h2 class="text-white text-xs">
+                <%= currentUser.nowPlaying[i].genre %>
+              </h2>
+            </div>
+          </div>
+          <% } %> <% } %>
+        </div>
+      </main>
+    </div>
     <%- include('../partials/icons.ejs') %>
   </body>
 </html>

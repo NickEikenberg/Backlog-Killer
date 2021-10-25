@@ -22,14 +22,20 @@ games.get('/:titleOfGame/addToBacklog', (req, res) => {
 games.get('/:id/addToNowPlaying', (req, res) => {
   Game.find({ id: req.params.id }, (err, game) => {
     let user = req.session.currentUser;
-    user.nowPlaying.push(game);
-    user.backlog.splice(
-      user.backlog.indexOf(
-        user.backlog.find((el) => el.id === req.params.id),
-        1
-      )
-    );
+    //USE FILTER
+    for (let i = 0; i < game.length; i++) {
+      if (game[i].id === req.params.id) {
+        user.nowPlaying.push(game[i]);
+        user.backlog.splice(
+          user.backlog.indexOf(
+            user.backlog.find((el) => el.id === req.params.id),
+            1
+          )
+        );
+      }
+    }
     console.log(req.session.currentUser.nowPlaying.length);
+    console.log(req.session.currentUser.nowPlaying);
     res.redirect(`/sessions/user/${req.session.currentUser.username}`);
   });
 });
