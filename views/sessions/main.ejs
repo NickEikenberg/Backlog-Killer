@@ -8,7 +8,16 @@
         <%= currentUser.username %>'s Backlog
       </h1>
       <div class="backlog flex flex-wrap">
-        <% for(let i = 0; i < currentUser.backlog.length; i++) { %>
+        <% if(currentUser.backlog.length === 0) { %>
+        <h1 class="text-white m-4">
+          Go
+          <a href="/backlogkiller" class="text-blue-400 hover:text-blue-200"
+            >add some games</a
+          >
+          to your backlog!
+        </h1>
+        <% } else { %> <% for(let i = 0; i < currentUser.backlog.length; i++) {
+        %>
         <div class="game-container w-1/2 p-2 md:w-1/4">
           <div class="img-container relative group">
             <img src="<%= currentUser.backlog[i].img %>" alt="" />
@@ -75,7 +84,7 @@
             </h2>
           </div>
         </div>
-        <% } %>
+        <% } %> <% } %>
       </div>
     </main>
 
@@ -84,8 +93,12 @@
         <%= currentUser.username %>'s Now Playing
       </h1>
       <div class="backlog flex flex-wrap">
-        <% for(let i = 0; i < currentUser.nowPlaying.length; i++) { %> <%
-        Games.findById(currentUser.nowPlaying[i], (err, game) => {%>
+        <% if(currentUser.nowPlaying.length === 0) { %>
+        <h1 class="text-white m-4">
+          Highlight games in your backlog to add them to this section
+        </h1>
+        <% } else { %> <% for(let i = 0; i < currentUser.nowPlaying.length; i++)
+        { %> <% Games.findById(currentUser.nowPlaying[i], (err, game) => {%>
         <h1><%= game.title %></h1>
         <% }) %>
         <div class="game-container w-1/2 p-2 md:w-1/4">
@@ -154,7 +167,7 @@
             </h2>
           </div>
         </div>
-        <% } %>
+        <% } %> <% } %>
       </div>
     </main>
     <%- include('../partials/icons.ejs') %>
