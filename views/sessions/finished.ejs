@@ -9,14 +9,87 @@
         <div
           class="
             finished-games
-            flex flex-col
+            flex flex-wrap
             items-center
             text-white text-center
           "
         >
-          <h1 class="text-5xl">Hall of Completion</h1>
-          <h2>View all of the games you've completed</h2>
-          <%= JSON.stringify(currentUser.finished) %>
+          <div class="headers-div w-full">
+            <h1 class="text-5xl">Hall of Completion</h1>
+            <h2>View all of the games you've completed</h2>
+          </div>
+          <% for(let i = 0; i < currentUser.finished.length; i++) { %>
+          <div class="game-container w-1/2 p-2 md:w-1/4">
+            <div class="img-container relative group">
+              <img
+                src="<%= currentUser.finished[i].img %>"
+                alt=""
+                class="w-full"
+              />
+              <div
+                class="
+                  buttons-div
+                  absolute
+                  bg-black
+                  w-full
+                  h-full
+                  top-0
+                  bg-opacity-30
+                  flex flex-col
+                  items-center
+                  justify-center
+                  opacity-0
+                  group-hover:opacity-100
+                "
+              >
+                <div
+                  class="
+                    btn-more-info
+                    text-white
+                    mb-10
+                    px-4
+                    bg-black bg-opacity-50
+                    cursor-pointer
+                  "
+                >
+                  <a href="/backlogkiller/<%=currentUser.finished[i].name%>"
+                    >MORE INFO</a
+                  >
+                </div>
+                <!-- Add if statement for backlog button -->
+                <div
+                  class="
+                    btn-add-backlog
+                    text-white
+                    px-4
+                    bg-black bg-opacity-50
+                    cursor-pointer
+                    text-center
+                    w-3/4
+                  "
+                >
+                  <% if(currentUser) { %>
+                  <a
+                    href="/backlogkiller/<%= currentUser.finished[i]._id %>/addToNowPlaying"
+                    class=""
+                    >ADD TO NOW PLAYING</a
+                  >
+
+                  <% } else {%>
+                  <a href="/sessions/new" class="">ADD TO BACKLOG</a>
+
+                  <% } %>
+                </div>
+              </div>
+            </div>
+            <div class="info-container bottom-0 bg-black w-full p-2 shadow-md">
+              <h1 class="text-white"><%= currentUser.finished[i].title %></h1>
+              <h2 class="text-white text-xs">
+                <%= currentUser.finished[i].genre %>
+              </h2>
+            </div>
+          </div>
+          <% } %>
         </div>
       </main>
     </div>

@@ -12,7 +12,16 @@
     "
   >
     <div class="nav-icon group">
-      <ion-icon name="reorder-three-outline cursor-pointer"></ion-icon>
+      <% if(currentUser) { %>
+      <form action="/sessions?_method=DELETE" method="post">
+        <input
+          type="submit"
+          value="LOGOUT"
+          class="absolute text-sm bg-blue-600 px-2 top-2 left-6"
+        />
+      </form>
+      <% } %>
+      <!-- <ion-icon name="reorder-three-outline cursor-pointer"></ion-icon>
       <div
         class="
           pullout-nav
@@ -51,7 +60,7 @@
             >
           </h1>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="logo-container">
       <h1 class="group cursor-pointer hover:text-red-400">
@@ -61,7 +70,12 @@
         >
       </h1>
     </div>
-    <div class="user-icon cursor-pointer">
+    <div class="user-icon cursor-pointer flex items-center">
+      <% if(currentUser) { %>
+      <h1 class="text-sm absolute right-6 top-16">
+        User: <%= currentUser.username %>
+      </h1>
+      <% } %>
       <a <% if(currentUser) { %>
         href="/sessions/user/<%= currentUser.username %>" <% } else {%>
         href="/sessions/new" <% } %> ><ion-icon
