@@ -4,6 +4,20 @@
   <body class="bg-gradient-to-r from-blue-200 via-blue-400 to-blue-600">
     <%- include('../partials/header.ejs') %>
     <div class="main-container flex flex-col items-center">
+      <a
+        href="/sessions/user/<%= currentUser.username %>/finished"
+        class="
+          text-white
+          hover:text-blue-600
+          bg-gray-800
+          m-4
+          border-gray-800 border-2
+          rounded-md
+          w-3/4
+          text-center
+        "
+        >Go to Finished Games</a
+      >
       <main class="bg-gray-800 m-4 border-gray-800 border-2 rounded-md w-3/4">
         <a href="" name="backlog"></a>
         <h1
