@@ -17,6 +17,11 @@
           ></a>
         </form>
       </div>
+      <% if(currentUser) {%> <% if(currentUser.username === 'admin') {%>
+      <div class="admin-btns">
+        <a href="/backlogkiller/new" class="text-white">Create a New Game</a>
+      </div>
+      <% } %> <% } %>
     </header>
 
     <div class="site-container flex justify-center">
@@ -75,7 +80,11 @@
                     text-center
                   "
                 >
-                  <% if(currentUser) { %>
+                  <% if(currentUser && currentUser.username === 'admin') {%>
+                  <a href="/backlogkiller/<%=games[i].name%>/edit" class="my-2"
+                    >EDIT GAME</a
+                  >
+                  <% } %> <% if(currentUser) { %>
                   <a
                     href="/backlogkiller/<%= games[i].name %>/addtobacklog"
                     class=""
