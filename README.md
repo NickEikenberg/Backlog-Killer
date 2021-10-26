@@ -16,4 +16,4 @@ JavaScript, EJS, HTML, CSS (Tailwind CSS), Express, Mongoose, MongoDB Atlas, and
 
 ### Known Issues
 
-1. N/A
+1. Search Bar doesn't work
