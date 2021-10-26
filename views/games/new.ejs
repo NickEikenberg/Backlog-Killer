@@ -2,27 +2,83 @@
 <html lang="en">
   <%- include('../partials/head.ejs') %>
 
-  <body>
-    <h1>New Game</h1>
-    <form action="/backlogkiller" method="post">
-      Game Name:
-      <input
-        type="text"
-        name="name"
-        placeholder="Name of game with no spaces"
-      /><br />
-      Game Title:
-      <input type="text" name="title" placeholder="Title of game" /> <br />
-      Release Date: <input type="text" name="releaseDate" /><br />
-      Platform: <input type="text" name="platform" /> <br />
-      Genre: <input type="text" name="genre" /><br />
-      Description: <textarea name="description"></textarea><br />
-      Image: <input type="text" name="img" /><br />
-      <input type="text" name="inBacklog" value="<%= false %>" hidden />
-      <input type="text" name="inNowPlaying" value="<%= false %>" hidden />
-      <input type="text" name="inFinished" value="<%= false %>" hidden />
+  <body class="bg-gradient-to-r from-blue-200 via-blue-400 to-blue-600">
+    <%- include('../partials/header.ejs') %>
 
-      <input type="submit" value="Create Game" class="cursor-pointer" />
-    </form>
+    <div class="container flex justify-center">
+      <div
+        class="
+          new-container
+          flex flex-col
+          mt-6
+          bg-gray-800
+          edit-container
+          shadow-lg
+          border-gray-800
+          rounded-md
+          w-3/4
+          lg:w-1/2
+          p-2
+        "
+      >
+        <h1 class="text-center text-3xl text-white">New Game</h1>
+        <form
+          action="/backlogkiller"
+          method="post"
+          class="flex flex-col justify-center text-white"
+        >
+          Game Name:
+          <input
+            type="text"
+            name="name"
+            placeholder="Name of game with no spaces"
+            class="bg-gray-800 border-white border-b-2 rounded-sm p-2"
+          /><br />
+          Game Title:
+          <input
+            type="text"
+            name="title"
+            placeholder="Title of game"
+            class="bg-gray-800 border-white border-b-2 rounded-sm p-2"
+          />
+          <br />
+          Release Date:
+          <input
+            type="text"
+            name="releaseDate"
+            class="bg-gray-800 border-white border-b-2 rounded-sm p-2"
+          /><br />
+          Platform:
+          <input
+            type="text"
+            name="platform"
+            class="bg-gray-800 border-white border-b-2 rounded-sm p-2"
+          />
+          <br />
+          Genre:
+          <input
+            type="text"
+            name="genre"
+            class="bg-gray-800 border-white border-b-2 rounded-sm p-2"
+          /><br />
+          Description:
+          <textarea name="description" class="text-black"></textarea><br />
+          Image:
+          <input
+            type="text"
+            name="img"
+            class="bg-gray-800 border-white border-b-2 rounded-sm p-2"
+          /><br />
+
+          <input
+            type="submit"
+            value="Create Game"
+            class="cursor-pointer bg-blue-600"
+          />
+        </form>
+      </div>
+    </div>
+    <%- include('../partials/footer.ejs') %> <%-
+    include('../partials/icons.ejs') %>
   </body>
 </html>

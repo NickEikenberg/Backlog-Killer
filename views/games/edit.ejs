@@ -1,40 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('../partials/head.ejs') %>
-  <body>
-    <h1>Edit Game: <%= game[0].title%></h1>
-    <form action="/backlogkiller/<%= game[0].name %>?_method=put" method="post">
-      Game Name:
-      <input
-        type="text"
-        name="name"
-        placeholder="Name of game with no spaces"
-        value="<%=game[0].name%>"
-      /><br />
-      Game Title:
-      <input
-        type="text"
-        name="title"
-        placeholder="Title of game"
-        value="<%= game[0].title %> "
-      />
-      <br />
-      Release Date:
-      <input
-        type="text"
-        name="releaseDate"
-        value="<%=game[0].releaseDate%>"
-      /><br />
-      Platform:
-      <input type="text" name="platform" value="<%=game[0].platform%>" /> <br />
-      Genre: <input type="text" name="genre" value="<%=game[0].genre%>" /><br />
-      Description:
-      <textarea name="description" placeholder="<%=game[0].description%>">
+  <body class="bg-gradient-to-r from-blue-200 via-blue-400 to-blue-600">
+    <%- include('../partials/header.ejs') %>
+    <div class="container flex justify-center w-full">
+      <div
+        class="
+          mt-6
+          bg-gray-800
+          edit-container
+          flex flex-col
+          justify-center
+          shadow-lg
+          border-gray-800
+          rounded-md
+          w-3/4
+          lg:w-1/2
+          p-2
+        "
+      >
+        <h1 class="text-center text-3xl text-white">
+          Edit Game: <%= game[0].title%>
+        </h1>
+        <form
+          action="/backlogkiller/<%= game[0].name %>?_method=put"
+          method="post"
+          class="flex flex-col justify-center text-white"
+        >
+          Game Name:
+          <input
+            type="text"
+            name="name"
+            placeholder="Name of game with no spaces"
+            value="<%=game[0].name%>"
+            class="bg-gray-800 border-white border-b-2 rounded-sm p-2"
+          /><br />
+          Game Title:
+          <input
+            type="text"
+            name="title"
+            placeholder="Title of game"
+            value="<%= game[0].title %> "
+            class="bg-gray-800 border-white border-b-2 rounded-sm p-2"
+          />
+          <br />
+          Release Date:
+          <input
+            type="text"
+            name="releaseDate"
+            value="<%=game[0].releaseDate%>"
+            class="bg-gray-800 border-white border-b-2 rounded-sm p-2"
+          /><br />
+          Platform:
+          <input
+            type="text"
+            name="platform"
+            value="<%=game[0].platform%>"
+            class="bg-gray-800 border-white border-b-2 rounded-sm p-2"
+          />
+          <br />
+          Genre:
+          <input
+            type="text"
+            name="genre"
+            value="<%=game[0].genre%>"
+            class="bg-gray-800 border-white border-b-2 rounded-sm p-2"
+          /><br />
+          Description:
+          <textarea
+            name="description"
+            value="<%=game[0].description%>"
+            class="text-black"
+          >
 <%= game[0].description %> </textarea
-      ><br />
-      Image: <input type="text" name="img" value="<%=game[0].img%>" /><br />
+          ><br />
+          Image:
+          <input
+            type="text"
+            name="img"
+            value="<%=game[0].img%>"
+            class="bg-gray-800 border-white border-b-2 rounded-sm p-2"
+          /><br />
 
-      <input type="submit" value="Edit Game" class="cursor-pointer" />
-    </form>
+          <input
+            type="submit"
+            value="Edit Game"
+            class="cursor-pointer bg-blue-600"
+          />
+        </form>
+      </div>
+    </div>
+    <%- include('../partials/footer.ejs') %> <%-
+    include('../partials/icons.ejs') %>
   </body>
 </html>

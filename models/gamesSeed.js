@@ -8,9 +8,6 @@ module.exports = [
     description:
       'Silent Hill 2 is a 2001 survival horror video game published by Konami for the PlayStation 2 and developed by Team Silent, part of Konami Computer Entertainment Tokyo. The second installment in the Silent Hill series, Silent Hill 2 centers on James Sunderland, a widower who journeys to the town of Silent Hill after receiving a letter from his dead wife informing him that she is waiting there for him.',
     img: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co2vyg.png',
-    inBacklog: false,
-    inNowPlaying: false,
-    inFinished: false,
   },
   {
     name: 'siren',
@@ -20,9 +17,6 @@ module.exports = [
     genre: 'Survival Horror',
     description: `Siren, known as Forbidden Siren in the PAL region, is a survival horror stealth game developed by Project Siren, a development team within Japan Studio, and published by Sony Computer Entertainment for the PlayStation 2 in 2003. The game's plot revolves around an interconnected cast of characters that possess a power which enables them to see and hear what a nearby character sees.`,
     img: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co1p0m.png',
-    inBacklog: false,
-    inNowPlaying: false,
-    inFinished: false,
   },
   {
     name: 'psychonauts',
@@ -32,9 +26,6 @@ module.exports = [
     genre: 'Platformer, Action, Adventure',
     description: `Psychonauts is a platform game developed by Double Fine Productions that was first released in 2005. Psychonauts follows the player-character Razputin (Raz), a young boy gifted with psychic abilities who runs away from the circus to try to sneak into a summer camp for those with similar powers to become a "Psychonaut", a spy with psychic abilities. He finds that there is a sinister plot occurring at the camp that only he can stop.`,
     img: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co38t0.png',
-    inBacklog: false,
-    inNowPlaying: false,
-    inFinished: false,
   },
   {
     name: 'residentevil2',

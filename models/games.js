@@ -9,9 +9,6 @@ const gameSchema = new mongoose.Schema(
     genre: { type: String },
     description: { type: String },
     img: { type: String, required: true },
-    inBacklog: Boolean,
-    inNowPlaying: Boolean,
-    inFinished: Boolean,
   },
   { timestamps: true }
 );

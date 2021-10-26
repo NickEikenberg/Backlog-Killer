@@ -61,6 +61,7 @@ app.use('/sessions', sessionsController);
 
 /////////////////////
 ///// ROUTES
+
 app.get('/', (req, res) => {
   res.redirect('/backlogkiller');
 });
