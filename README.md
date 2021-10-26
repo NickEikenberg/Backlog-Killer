@@ -17,3 +17,5 @@ JavaScript, EJS, HTML, CSS (Tailwind CSS), Express, Mongoose, MongoDB Atlas, and
 ### Known Issues
 
 1. Search Bar doesn't work
+2. User data doesn't persist
+3. User can't delete games from their backlog
